@@ -10,43 +10,36 @@ namespace EngRus
         public static int possitiveCount = 0;
         public static int negativeCount = 0;
 
-        public testOnlineForm()
+        mainForm f;
+
+        public testOnlineForm(mainForm f) // ссылка на главную форму
         {
             InitializeComponent();
+            this.f = f;
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
             flag = !flag;
 
-            this.Size = new System.Drawing.Size(361, 464);
+            this.Size = new System.Drawing.Size(361, 477);
             hintGroupBox.Visible = true;
 
             if (flag)
             {
-                this.Size = new System.Drawing.Size(361, 464);
+                this.Size = new System.Drawing.Size(361, 477);
                 flag = true;
                 trascriptionENWord.Text = mainForm.columnTranscription;
                 trascriptionRusWord.Text = mainForm.columnRusTranscription;
                 wordVisible.Text = mainForm.columnEngWord;
+                string firstChar = mainForm.columnRusWord;
+                firstRusChar.Text = firstChar.Substring(0, 1);
             }
             else
             {
                 hintGroupBox.Visible = false;
                 this.Size = new System.Drawing.Size(361, 366);
                 flag = false;
-            }
-        }
-
-        private void testOnlineForm_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            var result = MessageBox.Show("Закончить тестирование?", "Внимание",
-                MessageBoxButtons.YesNo,
-                MessageBoxIcon.Question);
-
-            if (result != DialogResult.Yes)
-            {
-                e.Cancel = true;
             }
         }
 
@@ -63,6 +56,9 @@ namespace EngRus
                 MessageBox.Show("Верно");
                 possitiveCount = possitiveCount + 1;
                 positiveStat.Text = possitiveCount.ToString();
+                f.randGetWord();
+                wordVisible.Text = mainForm.columnEngWord;
+                translateTextBox.Text = "";
             }
 
             else
@@ -71,6 +67,12 @@ namespace EngRus
                 negativeCount = negativeCount - 1;
                 negativeStat.Text = negativeCount.ToString();
             }
+        }
+
+        private void testOnlineForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            this.Hide();
+            f.Show();
         }
     }
 }

@@ -18,3 +18,5 @@ H:\РАЗЛИЧНЫЕ ПРОЕКТЫ\C#\C# проекты\ENGRUS\EngRus\EngRus\o
 H:\РАЗЛИЧНЫЕ ПРОЕКТЫ\C#\C# проекты\ENGRUS\EngRus\EngRus\obj\Debug\EngRus.pdb
 H:\РАЗЛИЧНЫЕ ПРОЕКТЫ\C#\C# проекты\ENGRUS\EngRus\EngRus\obj\Debug\EngRus.mainForm.resources
 H:\РАЗЛИЧНЫЕ ПРОЕКТЫ\C#\C# проекты\ENGRUS\EngRus\EngRus\obj\Debug\EngRus.testOnlineForm.resources
+H:\РАЗЛИЧНЫЕ ПРОЕКТЫ\C#\C# проекты\ENGRUS\EngRus\EngRus\obj\Debug\EngRus.FullStat.resources
+H:\РАЗЛИЧНЫЕ ПРОЕКТЫ\C#\C# проекты\ENGRUS\EngRus\EngRus\obj\Debug\EngRus.EditDB.resources

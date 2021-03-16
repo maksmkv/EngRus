@@ -17,11 +17,12 @@ namespace EngRus
         public static string columnRusWord { get; set; }
         public static string columnDescription { get; set; }
         public static string columnLink { get; set; }
-
+        public static int countEngWord { get; set; }
         public mainForm()
         {
             InitializeComponent();
         }
+
 
         private void CustomizeDataGridView()
         {
@@ -37,8 +38,8 @@ namespace EngRus
 
             var columnId = new DataGridViewTextBoxColumn { DataPropertyName = "_id", HeaderText = "id", Width = 100 };
             var columnEngWord = new DataGridViewTextBoxColumn { DataPropertyName = "engword", HeaderText = "Английский", Width = 50 };
-            var columnTranscription = new DataGridViewTextBoxColumn { DataPropertyName = "transcription", HeaderText = "Транскрипция" };
-            var columnRusTranscription = new DataGridViewTextBoxColumn { DataPropertyName = "rustranscription", HeaderText = "Русский", Width = 75 };
+            var columnTranscription = new DataGridViewTextBoxColumn { DataPropertyName = "transcription", HeaderText = "Английская транскрипция" };
+            var columnRusTranscription = new DataGridViewTextBoxColumn { DataPropertyName = "rustranscription", HeaderText = "Русская транскрипция", Width = 75 };
             var columnRusWord = new DataGridViewTextBoxColumn { DataPropertyName = "rusword", HeaderText = "Русский", Width = 75 };
             var columnDescription = new DataGridViewTextBoxColumn { DataPropertyName = "description", HeaderText = "Описание", Width = 250 };
             var columnLink = new DataGridViewTextBoxColumn { DataPropertyName = "link", HeaderText = "Ссылка на изображение", Width = 250 };
@@ -65,6 +66,7 @@ namespace EngRus
                 myconnection.Close();
                 dataGridView.DataSource = dt;
             }
+            countEngWord = dataGridView.Rows.Count;
         }
 
         private void открытьБДToolStripMenuItem_Click(object sender, EventArgs e)
@@ -82,11 +84,10 @@ namespace EngRus
             else
             {
                 randGetWord();
-                testOnlineForm f2 = new testOnlineForm();
                 this.Hide();
-                f2.ShowDialog(); //Отображать  изначальную форму
-                this.Show();
-            }
+                testOnlineForm ff = new testOnlineForm(this);
+                ff.ShowDialog();
+                }
         }
 
         public void randGetWord()
@@ -111,6 +112,24 @@ namespace EngRus
 
             if (result != DialogResult.Yes)
                 e.Cancel = true;
+        }
+
+        private void общаяСтатистикаToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            FullStat fullstat = new FullStat(this);
+            fullstat.ShowDialog();
+        }
+
+        private void закрытьToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private void toolStripMenuItem3_Click(object sender, EventArgs e)
+        {
+            EditDB editDB = new EditDB(this);
+            editDB.ShowDialog();
         }
     }
 }
